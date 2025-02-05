@@ -1,0 +1,43 @@
+.classes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.class-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.class-card:hover {
+    transform: scale(1.05);
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+@media (max-width: 900px) {
+    .classes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .classes-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

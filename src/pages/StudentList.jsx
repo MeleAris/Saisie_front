@@ -1,6 +1,6 @@
 import { PencilIcon, PlusIcon, Search } from 'lucide-react';
-import React, { useContext, useEffect, useNavigate, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../constantes/constante';
 import { AuthContext } from "../context/authContext";
 import '../styles/StudentList.css';

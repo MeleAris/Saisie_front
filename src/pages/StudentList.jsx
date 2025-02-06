@@ -1,7 +1,8 @@
 import { PencilIcon, PlusIcon, Search } from 'lucide-react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useNavigate, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { API_URL } from '../constantes/constante';
+import { AuthContext } from "../context/authContext";
 import '../styles/StudentList.css';
 
 const StudentList = () => {
@@ -16,12 +17,20 @@ const StudentList = () => {
     const [selectedStudent, setSelectedStudent] = useState(null);
     const [studentNotes, setStudentNotes] = useState({ id: null, note_classe: null, note_devoir: null, note_compo: null });
 
+    const { dispatch } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     useEffect(() => {
         const fetchStudents = async () => {
             try {
                 const response = await fetch(`${API_URL}/students/${id}`, {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
                 });
+                if (response.status === 401) {
+                    dispatch({ type: "LOGOUT" });
+                    navigate('/login');
+                    return;
+                }
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
                 setStudents(data);

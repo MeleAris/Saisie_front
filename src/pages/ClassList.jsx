@@ -1,6 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../constantes/constante';
+import { AuthContext } from "../context/authContext";
 import '../styles/Classes.css';
 
 const Classes = () => {
@@ -8,6 +9,7 @@ const Classes = () => {
     const [matieres, setMatieres] = useState([]);
     const [ens, setEns] = useState([]);
     const [error, setError] = useState('');
+    const { dispatch } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -17,6 +19,12 @@ const Classes = () => {
                 const response = await fetch(`${API_URL}/classes`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
+
+                if (response.status === 401) {
+                    dispatch({ type: "LOGOUT" });
+                    navigate('/login');
+                    return;
+                }
 
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des classes');

@@ -20,7 +20,7 @@ const Classes = () => {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
 
-                if (response.status === 401) {
+                if (response.status === 403) {
                     dispatch({ type: "LOGOUT" });
                     navigate('/login');
                     return;
@@ -43,7 +43,7 @@ const Classes = () => {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
 
-                if (response.status === 401) {
+                if (response.status === 403) {
                     dispatch({ type: "LOGOUT" });
                     navigate('/login');
                     return;
@@ -66,7 +66,7 @@ const Classes = () => {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
 
-                if (response.status === 401) {
+                if (response.status === 403) {
                     dispatch({ type: "LOGOUT" });
                     navigate('/login');
                     return;

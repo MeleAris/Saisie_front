@@ -5,7 +5,7 @@ import { AuthContext } from './context/authContext';
 import ClasseList from './pages/ClassList';
 import { NotFound, ServerError } from './pages/Error';
 import Login from './pages/Login';
-import StudentList from './pages/StudentList';
+import StudentListUpdated from './pages/StudentListUpdated';
 
 import './styles/App.css';
 
@@ -21,7 +21,8 @@ const App = () => {
       <Routes>
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/' element={<RequireAuth children={<ClasseList />} />} />
-        <Route exact path='/students/:id' element={<RequireAuth children={<StudentList />} />} />
+        <Route exact path='/students/:id' element={<RequireAuth children={<StudentListUpdated />} />} />
+        {/* <Route exact path='/students/:id' element={<RequireAuth children={<StudentList />} />} /> */}
 
         <Route exact path='/*' element={<NotFound />} />
         <Route exact path='/error' element={<ServerError />} />

@@ -78,7 +78,7 @@ const StudentList = () => {
             ...prevState,
             [studentId]: {
                 ...prevState[studentId],
-                [name]: value
+                [name]: value === '' ? null : parseInt(value)
             }
         }));
     };

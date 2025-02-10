@@ -43,6 +43,12 @@ const Classes = () => {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
 
+                if (response.status === 401) {
+                    dispatch({ type: "LOGOUT" });
+                    navigate('/login');
+                    return;
+                }
+
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des données');
                 }
@@ -59,6 +65,12 @@ const Classes = () => {
                 const response = await fetch(`${API_URL}/matieres`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
+
+                if (response.status === 401) {
+                    dispatch({ type: "LOGOUT" });
+                    navigate('/login');
+                    return;
+                }
 
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des données');

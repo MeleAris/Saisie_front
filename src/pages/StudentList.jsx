@@ -45,6 +45,13 @@ const StudentList = () => {
                 const response = await fetch(`${API_URL}/notes/${localStorage.getItem('subject')}`, {
                     headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` }
                 });
+
+                if (response.status === 401) {
+                    dispatch({ type: "LOGOUT" });
+                    navigate('/login');
+                    return;
+                }
+                
                 if (!response.ok) throw new Error('Erreur lors de la récupération des données');
                 const data = await response.json();
 

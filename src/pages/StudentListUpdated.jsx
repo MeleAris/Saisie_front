@@ -74,11 +74,12 @@ const StudentList = () => {
 
     const handleNoteChange = (studentId, e) => {
         const { name, value } = e.target;
+        const formattedValue = value === '' ? null : parseFloat(parseFloat(value).toFixed(2));
         setAllStudentNotes(prevState => ({
             ...prevState,
             [studentId]: {
                 ...prevState[studentId],
-                [name]: value === '' ? null : parseInt(value)
+                [name]: formattedValue
             }
         }));
     };

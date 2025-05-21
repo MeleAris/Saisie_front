@@ -154,6 +154,12 @@ const StudentList = () => {
                                             value={allStudentNotes[student.id]?.note_classe || ''}
                                             min={0}
                                             max={20}
+                                            step="0.5"
+                                            onKeyDown={(e) => {
+                                                if (e.key.length === 1 && !/[0-9.,]/.test(e.key)) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
                                             onChange={(e) => handleNoteChange(student.id, e)}
                                         />
                                     </td>
@@ -165,6 +171,12 @@ const StudentList = () => {
                                             value={allStudentNotes[student.id]?.note_devoir || ''}
                                             min={0}
                                             max={20}
+                                            step="0.5"
+                                            onKeyDown={(e) => {
+                                                if (e.key.length === 1 && !/[0-9.,]/.test(e.key)) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
                                             onChange={(e) => handleNoteChange(student.id, e)}
                                         />
                                     </td>
@@ -176,6 +188,12 @@ const StudentList = () => {
                                             value={allStudentNotes[student.id]?.note_compo || ''}
                                             min={0}
                                             max={20}
+                                            step="0.5"
+                                            onKeyDown={(e) => {
+                                                if (e.key.length === 1 && !/[0-9.,]/.test(e.key)) {
+                                                    e.preventDefault();
+                                                }
+                                            }}
                                             onChange={(e) => handleNoteChange(student.id, e)}
                                         />
                                     </td>

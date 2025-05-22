@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { API_URL } from '../constantes/constante';
 import { AuthContext } from "../context/authContext";
@@ -104,7 +104,7 @@ const StudentList = () => {
             if (!response.ok) throw new Error('Erreur lors de l\'enregistrement des notes');
 
             alert('Notes enregistrées avec succès');
-            window.location.reload();
+            navigate(-1)
         } catch (err) {
             alert(err.message);
         }

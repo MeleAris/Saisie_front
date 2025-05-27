@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { API_URL } from '../constantes/constante';
 import { AuthContext } from "../context/authContext";
@@ -31,7 +31,12 @@ const Login = () => {
 
             dispatch({ type: "LOGIN", payload: data.token });
             localStorage.setItem('user', data.teacher.id);
-            navigate('/');
+            //Redirection en fonction du role de prof
+            if (data.teacher.role === 'admin') {
+                navigate('/dashboard');
+            } else {
+                navigate('/');
+            }
         } catch (error) {
             setError(error.message);
         }
